@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+require 'bundler/setup'
+require 'national_parks'
+
+NationalParks::CLI.new.run

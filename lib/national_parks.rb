@@ -1,6 +1,6 @@
-require "national_parks/version"
-
-module NationalParks
-  class Error < StandardError; end
-  # Your code goes here...
-end
+require 'national_parks/cli'
+require 'national_parks/park'
+require 'national_parks/scraper'
+require 'national_parks/version'
+require 'nokogiri'
+require 'open-uri'
