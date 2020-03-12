@@ -46,19 +46,21 @@ class NationalParks::Park
           self.location = "#{line_1},  #{alt_line_2}, #{alt_line_3}"
         end
       elsif location.children[1].children[3].children[3].children.to_a.length > 5
-        #49.RMNP (Page built differently, children is a single array[as opposed to arrays separated by commas])
+        #49.RMNP (Page built differently, children is a single array
+        #as opposed to arrays separated by commas)
         line_1 = location.children[1].children[3].children[3].children[1].children[1].children.text
         line_2 = location.children[1].children[3].children[3].children[3].children.text.gsub("\n","").chomp(" ")
         line_3 = location.children[1].children[3].children[3].children[5].children.text
         self.location = "#{line_1},  #{line_2}, #{line_3}"
       else
-        #56.WSNP (Built differently because location is an AF base and therefore doesnt have a street address)
+        #56.WSNP (Built differently because location is an AF base and
+        #doesnt have a street address)
         line_1 = location.children[1].children[3].children[3].children[1].children.text.gsub("\n","").chomp(" ")
         line_2 = location.children[1].children[3].children[3].children[3].children[0].text
         self.location = "#{line_1}, #{line_2}"
       end
     else
-      #Group of parks?(#6. BCGNP confirmed) children is a single
+      #Group of parks?(#6. BCGNP confirmed) children is a single array
       line_1 = location.children[0].children[3].children[3].children[3].children[1].text
       line_2 = location.children[0].children[3].children[3].children[5].children.text.gsub("\n","").chomp(" ")
       line_3 = location.children[0].children[3].children[3].children[7].children[0].text
@@ -76,11 +78,9 @@ class NationalParks::Park
     end
 
     if self.name == "Rocky Mountain National Park"
-      self.information +=
-
-      "BONUS: The developer of this gem lives 40 minutes
-      from the eastern entrance and highly suggests a hike at Lilly Lake for
-      a great view of Longs Peak!"
+      self.information += "
+      
+      BONUS: The developer of this gem lives 40 minutes from the eastern entrance and highly suggests a hike at Lilly Lake for a great view of Longs Peak!"
     end
 
     weather = page[3].children[0].children[0].children[2]
