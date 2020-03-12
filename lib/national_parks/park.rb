@@ -76,7 +76,9 @@ class NationalParks::Park
     end
 
     if self.name == "Rocky Mountain National Park"
-      self.information += "BONUS: The developer of this gem lives 40 minutes
+      self.information +=
+
+      "BONUS: The developer of this gem lives 40 minutes
       from the eastern entrance and highly suggests a hike at Lilly Lake for
       a great view of Longs Peak!"
     end
