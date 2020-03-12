@@ -54,8 +54,6 @@ class NationalParks::CLI
     input = ""
     puts input
     while input != "exit"
-      puts input
-
 
       input = gets.strip.downcase
 
