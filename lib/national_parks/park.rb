@@ -75,6 +75,12 @@ class NationalParks::Park
       self.information = page[0].text.gsub("\n","").strip.split("   ")[0].split("Information")[1]
     end
 
+    if self.name == "Rocky Mountain National Park"
+      self.information += "BONUS: The developer of this gem lives 40 minutes
+      from the eastern entrance and highly suggests a hike at Lilly Lake for
+      a great view of Longs Peak!"
+    end
+
     weather = page[3].children[0].children[0].children[2]
 
     if weather
