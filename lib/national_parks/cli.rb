@@ -35,6 +35,7 @@ class NationalParks::CLI
   end
 
   def pl_list
+    sleep(2)
     puts "To see its location, enter 'location'"
     puts "To see a brief description of the park, enter 'description'"
     puts "To see a more detailed informational section, enter 'information'"
