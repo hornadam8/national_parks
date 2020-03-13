@@ -118,6 +118,9 @@ class NationalParks::Park
       self.wildlife = "There is no information available on wildlife in this park."
     end
 
+    if self.name == "Yosemite National Park"
+      self.information = "#{self.information.split("<")[0]}"
+    end
 
 
 
