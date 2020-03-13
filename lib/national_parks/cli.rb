@@ -56,7 +56,7 @@ class NationalParks::CLI
          |--------------------------------------------------------------------|
          |                                                   © 2020 Adam Horn |
          |                                                                    |
-         |                    Welcome to the NPS data gem!                    |
+         |                     Welcome to the NPS data gem!                   |
          |                          _________________                         |
          |                          (               )                         |
          |                    _______(             )_______                   |
@@ -72,8 +72,8 @@ class NationalParks::CLI
          |                              (_     _)                             |
          |                                (___)                               |
          |                                                                    |
-         |                  Here is a list of National Parks                  |
-         |                       in the United States:                        |
+         |                   Here is a list of National Parks                 |
+         |                        in the United States:                       |
          |                                                                    |
          |--------------------------------------------------------------------|
         DISPLAY
@@ -160,7 +160,7 @@ class NationalParks::CLI
          |--------------------------------------------------------------------|
           #{@park.location}
          |--------------------------------------------------------------------|
-         |                Press any key to return to park menu                |
+         |                  Press enter to return to park menu                |
          |--------------------------------------------------------------------|
         DISPLAY
         input_2 = gets.strip
@@ -174,7 +174,7 @@ class NationalParks::CLI
          |--------------------------------------------------------------------|
           #{@park.description}
          |--------------------------------------------------------------------|
-         |                Press any key to return to park menu                |
+         |                  Press enter to return to park menu                |
          |--------------------------------------------------------------------|
         DISPLAY
         input_2 = gets.strip
@@ -188,7 +188,7 @@ class NationalParks::CLI
          |--------------------------------------------------------------------|
           #{@park.information}
          |--------------------------------------------------------------------|
-         |                Press any key to return to park menu                |
+         |                  Press enter to return to park menu                |
          |--------------------------------------------------------------------|
         DISPLAY
         input_2 = gets.strip
@@ -202,7 +202,7 @@ class NationalParks::CLI
          |--------------------------------------------------------------------|
           #{@park.weather}
          |--------------------------------------------------------------------|
-         |                Press any key to return to park menu                |
+         |                  Press enter to return to park menu                |
          |--------------------------------------------------------------------|
         DISPLAY
         input_2 = gets.strip
@@ -216,7 +216,7 @@ class NationalParks::CLI
          |--------------------------------------------------------------------|
           #{@park.tours_and_camping}
          |--------------------------------------------------------------------|
-         |                Press any key to return to park menu                |
+         |                  Press enter to return to park menu                |
          |--------------------------------------------------------------------|
         DISPLAY
         input_2 = gets.strip
@@ -230,7 +230,7 @@ class NationalParks::CLI
          |--------------------------------------------------------------------|
           #{@park.wildlife}
          |--------------------------------------------------------------------|
-         |                Press any key to return to park menu                |
+         |                  Press enter to return to park menu                |
          |--------------------------------------------------------------------|
         DISPLAY
         input_2 = gets.strip
