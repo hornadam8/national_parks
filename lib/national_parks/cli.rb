@@ -11,18 +11,71 @@ class NationalParks::CLI
   end
 
   def list_parks
-    NationalParks::Park.all.each.with_index(1){|park,index| puts "#{index}. #{park.name}"}
+    NationalParks::Park.all.each.with_index(1){|park,index| puts <<-DISPLAY
+        #{index}. #{park.name}
+        DISPLAY
+        }
     menu
   end
 
   def goodbye
-    puts "Happy trails!"
+    puts <<-DISPLAY
+         |--------------------------------------------------------------------|
+         |                                                   © 2020 Adam Horn |
+         |                                                                    |
+         |                            Happy Trails!                           |
+         |                          _________________                         |
+         |                          (               )                         |
+         |                    _______(             )_______                   |
+         |                    (                           )                   |
+         |                     (      National           )                    |
+         |                      (                       )                     |
+         |                       (       Park          )                      |
+         |                        (                   )                       |
+         |                         (       Service   )                        |
+         |                          (               )                         |
+         |                           (             )                          |
+         |                            (_         _)                           |
+         |                              (_     _)                             |
+         |                                (___)                               |
+         |                                                                    |
+         |                                                                    |
+         |--------------------------------------------------------------------|
+        DISPLAY
   end
 
   def call
-    puts "Welcome to the NPS data gem!"
-    puts "Here is a list of national parks in the United States"
+    start
     list_parks
+  end
+
+  def start
+    puts <<-DISPLAY
+         |--------------------------------------------------------------------|
+         |                                                   © 2020 Adam Horn |
+         |                                                                    |
+         |                    Welcome to the NPS data gem!                    |
+         |                          _________________                         |
+         |                          (               )                         |
+         |                    _______(             )_______                   |
+         |                    (                           )                   |
+         |                     (      National           )                    |
+         |                      (                       )                     |
+         |                       (       Park          )                      |
+         |                        (                   )                       |
+         |                         (       Service   )                        |
+         |                          (               )                         |
+         |                           (             )                          |
+         |                            (_         _)                           |
+         |                              (_     _)                             |
+         |                                (___)                               |
+         |                                                                    |
+         |                  Here is a list of National Parks                  |
+         |                       in the United States:                        |
+         |                                                                    |
+         |--------------------------------------------------------------------|
+        DISPLAY
+        sleep(8)
   end
 
   def menu
@@ -30,21 +83,59 @@ class NationalParks::CLI
 
     @i = gets.to_i
     @park = NationalParks::Park.all[@i-1]
-    puts "Welcome to #{@park.name}!"
+    puts <<-DISPLAY
+         |--------------------------------------------------------------------|
+         |                                                   © 2020 Adam Horn |
+         |                                                                    |
+                        Welcome to #{@park.name}!
+         |                          _________________                         |
+         |                          (               )                         |
+         |                    _______(             )_______                   |
+         |                    (                           )                   |
+         |                     (      National           )                    |
+         |                      (                       )                     |
+         |                       (       Park          )                      |
+         |                        (                   )                       |
+         |                         (       Service   )                        |
+         |                          (               )                         |
+         |                           (             )                          |
+         |                            (_         _)                           |
+         |                              (_     _)                             |
+         |                                (___)                               |
+         |                                                                    |
+         |                                                                    |
+         |--------------------------------------------------------------------|
+        DISPLAY
     park_menu
   end
 
   def pl_list
     sleep(2)
-    puts "To see its location, enter 'location'"
-    puts "To see a brief description of the park, enter 'description'"
-    puts "To see a more detailed informational section, enter 'information'"
-    puts "To see a description of climate/typical weather in the park, enter 'weather'"
-    puts "To see information on tours and camping , enter 'tours and camping'"
-    puts "To see information on wildlife in the park, enter 'wildlife'"
-    puts "To see the list of parks again, enter 'list'"
-    puts "To exit, enter 'exit'"
-    puts "What information would you like about #{@park.name}"
+    puts <<-DISPLAY
+         |--------------------------------------------------------------------|
+         |                                                                    |
+         |                                                                    |
+         | To see its location, enter 'location'                              |
+         |                                                                    |
+         | To see a brief description of the park, enter 'description'        |
+         |                                                                    |
+         | To see a more detailed informational section, enter 'information'  |
+         |                                                                    |
+         | To see a description of the climate in the park, enter 'weather'   |
+         |                                                                    |
+         | To see information on tours and camping , enter 'tours and camping'|
+         |                                                                    |
+         | To see information on wildlife in the park, enter 'wildlife'       |
+         |                                                                    |
+         | To see the list of parks again, enter 'list'                       |
+         |                                                                    |
+         | To exit, enter 'exit'                                              |
+         |                                                                    |
+         | What information would you like about #{@park.name}                
+         |                                                                    |
+         |--------------------------------------------------------------------|
+        DISPLAY
+
   end
 
   def park_menu
@@ -59,8 +150,13 @@ class NationalParks::CLI
 
       case input
       when "location"
-        puts "#{@park.location}"
-        puts "Press any key to return to the menu"
+        puts <<-DISPLAY
+         |--------------------------------------------------------------------|
+          #{@park.location}
+         |--------------------------------------------------------------------|
+         |                Press any key to return to park menu                |
+         |--------------------------------------------------------------------|
+        DISPLAY
         input_2 = gets.strip
         input_2 = "enter"
         case input_2
@@ -68,8 +164,13 @@ class NationalParks::CLI
           pl_list
         end
       when "description"
-        puts "#{@park.description}"
-        puts "Press any key to return to the menu"
+        puts <<-DISPLAY
+         |--------------------------------------------------------------------|
+          #{@park.description}
+         |--------------------------------------------------------------------|
+         |                Press any key to return to park menu                |
+         |--------------------------------------------------------------------|
+        DISPLAY
         input_2 = gets.strip
         input_2 = "enter"
         case input_2
@@ -77,8 +178,13 @@ class NationalParks::CLI
           pl_list
         end
       when "information"
-        puts "#{@park.information}"
-        puts "Press any key to return to the menu"
+        puts <<-DISPLAY
+         |--------------------------------------------------------------------|
+          #{@park.information}
+         |--------------------------------------------------------------------|
+         |                Press any key to return to park menu                |
+         |--------------------------------------------------------------------|
+        DISPLAY
         input_2 = gets.strip
         input_2 = "enter"
         case input_2
@@ -86,8 +192,13 @@ class NationalParks::CLI
           pl_list
         end
       when "weather"
-        puts "#{@park.weather}"
-        puts "Press any key to return to the menu"
+        puts <<-DISPLAY
+         |--------------------------------------------------------------------|
+          #{@park.weather}
+         |--------------------------------------------------------------------|
+         |                Press any key to return to park menu                |
+         |--------------------------------------------------------------------|
+        DISPLAY
         input_2 = gets.strip
         input_2 = "enter"
         case input_2
@@ -95,8 +206,13 @@ class NationalParks::CLI
           pl_list
         end
       when "tours and camping"
-        puts "#{@park.tours_and_camping}"
-        puts "Press any key to return to the menu"
+        puts <<-DISPLAY
+         |--------------------------------------------------------------------|
+          #{@park.tours_and_camping}
+         |--------------------------------------------------------------------|
+         |                Press any key to return to park menu                |
+         |--------------------------------------------------------------------|
+        DISPLAY
         input_2 = gets.strip
         input_2 = "enter"
         case input_2
@@ -104,6 +220,13 @@ class NationalParks::CLI
           pl_list
         end
       when "wildlife"
+        puts <<-DISPLAY
+         |--------------------------------------------------------------------|
+          #{@park.wildlife}
+         |--------------------------------------------------------------------|
+         |                Press any key to return to park menu                |
+         |--------------------------------------------------------------------|
+        DISPLAY
         puts "#{@park.wildlife}"
         puts "Press any key to return to the menu"
         input_2 = gets.strip
@@ -116,7 +239,11 @@ class NationalParks::CLI
         list_parks
         break
       when String != "exit"
-        puts "Not sure what that means, give it another shot"
+        puts <<-DISPLAY
+         |--------------------------------------------------------------------|
+         |          Not sure what that means, give it another shot            |
+         |--------------------------------------------------------------------|
+        DISPLAY
         pl_list
       when "exit"
         input = "exit"
