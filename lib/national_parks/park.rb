@@ -4,6 +4,8 @@ require 'pry'
 
 class NationalParks::Park
 
+
+
   attr_accessor :name, :link, :location, :description, :information, :weather, :tours_and_camping, :wildlife
 
   @@all = []
@@ -72,14 +74,14 @@ class NationalParks::Park
     information = page[0].children[11]
 
     if information
-      self.information = information.children.text.gsub("\n","").strip.split("   ")[0]
+      self.information = information.children.text.strip.split("   ")[0]
     else
-      self.information = page[0].text.gsub("\n","").strip.split("   ")[0].split("Information")[1]
+      self.information = page[0].text.strip.split("   ")[0].split("Information")[1]
     end
 
     if self.name == "Rocky Mountain National Park"
       self.information += "
-      
+
       BONUS: The developer of this gem lives 40 minutes from the eastern entrance and highly suggests a hike at Lilly Lake for a great view of Longs Peak!"
     end
 

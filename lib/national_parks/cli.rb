@@ -12,7 +12,9 @@ class NationalParks::CLI
 
   def list_parks
     NationalParks::Park.all.each.with_index(1){|park,index| puts <<-DISPLAY
-        #{index}. #{park.name}
+         |--------------------------------------------------------------------|
+                    #{index}. #{park.name}
+         |--------------------------------------------------------------------|
         DISPLAY
         }
     menu
@@ -79,7 +81,11 @@ class NationalParks::CLI
   end
 
   def menu
-    puts "Please enter the number of a park for more information"
+    puts <<-DISPLAY
+        |---------------------------------------------------------------------|
+        |            Enter the number of a park to see details                |
+        |---------------------------------------------------------------------|
+       DISPLAY
 
     @i = gets.to_i
     @park = NationalParks::Park.all[@i-1]
@@ -131,7 +137,7 @@ class NationalParks::CLI
          |                                                                    |
          | To exit, enter 'exit'                                              |
          |                                                                    |
-         | What information would you like about #{@park.name}                
+         | What information would you like about #{@park.name}
          |                                                                    |
          |--------------------------------------------------------------------|
         DISPLAY
@@ -227,8 +233,6 @@ class NationalParks::CLI
          |                Press any key to return to park menu                |
          |--------------------------------------------------------------------|
         DISPLAY
-        puts "#{@park.wildlife}"
-        puts "Press any key to return to the menu"
         input_2 = gets.strip
         input_2 = "enter"
         case input_2
