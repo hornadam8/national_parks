@@ -218,7 +218,9 @@ class NationalParks::CLI
       when "nearby parks"
         puts <<-DISPLAY
          |--------------------------------------------------------------------|
-          #{@park.nearby_parks}
+          #{@park.nearby_parks[0]}
+          #{@park.nearby_parks[1]}
+          #{@park.nearby_parks[2]}
          |--------------------------------------------------------------------|
          |                  Press enter to return to park menu                |
          |--------------------------------------------------------------------|
