@@ -32,21 +32,26 @@ class NationalParks::Park
     location = page[3]
 
     if location.children.to_a.length >= 2
+
       if location.children[1].children[3].children[3].children[3].children.to_a.length > 1
         line_1 = location.children[1].children[3].children[3].children[3].children[1].children[0].text
         line_2 = location.children[1].children[3].children[3].children[3].children[3]
+
+
         if line_2
           #Group of parks?(#2 Arches confirmed) with an extra piece of info(Box#)
           line_2_sub = line_2.children[0].text.gsub("\n","").chomp(" ")
           line_3 = location.children[1].children[3].children[3].children[5].children.text.gsub("\n","").chomp(" ")
           line_4 = location.children[1].children[3].children[3].children[7].children[0].text
           self.location = "#{line_1} #{line_2_sub},  #{line_3}, #{line_4}"
+          
         else
           #Most Parks
           alt_line_2 = location.children[1].children[3].children[3].children[5].children.text.gsub("\n","").chomp(" ")
           alt_line_3 = location.children[1].children[3].children[3].children[7].text
           self.location = "#{line_1},  #{alt_line_2}, #{alt_line_3}"
         end
+
       elsif location.children[1].children[3].children[3].children.to_a.length > 5
         #49.RMNP (Page built differently, children is a single array
         #as opposed to arrays separated by commas)
@@ -54,6 +59,7 @@ class NationalParks::Park
         line_2 = location.children[1].children[3].children[3].children[3].children.text.gsub("\n","").chomp(" ")
         line_3 = location.children[1].children[3].children[3].children[5].children.text
         self.location = "#{line_1},  #{line_2}, #{line_3}"
+
       else
         #56.WSNP (Built differently because location is an AF base and
         #doesnt have a street address)
@@ -61,6 +67,7 @@ class NationalParks::Park
         line_2 = location.children[1].children[3].children[3].children[3].children[0].text
         self.location = "#{line_1}, #{line_2}"
       end
+
     else
       #Group of parks?(#6. BCGNP confirmed) children is a single array
       line_1 = location.children[0].children[3].children[3].children[3].children[1].text
@@ -126,6 +133,7 @@ class NationalParks::Park
     #Nearby Parks--------------------------------------------------------------
 
     nearby_parks_page = NationalParks::Scraper.get_park_page(self.link).css(".three-col")
+
     park_1 = nearby_parks_page.children[10].children[1].children[3].children[1].text
     park_2 = nearby_parks_page.children[13].children[1].children[3].children[1].text
     park_3 = nearby_parks_page.children[16].children[1].children[3].children[1].text
