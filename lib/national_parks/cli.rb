@@ -10,42 +10,6 @@ class NationalParks::CLI
     call
   end
 
-  def list_parks
-    NationalParks::Park.all.each.with_index(1){|park,index| puts <<-DISPLAY
-         |--------------------------------------------------------------------|
-                    #{index}. #{park.name}
-         |--------------------------------------------------------------------|
-        DISPLAY
-        }
-    menu
-  end
-
-  def goodbye
-    puts <<-DISPLAY
-         |--------------------------------------------------------------------|
-         |                                                   © 2020 Adam Horn |
-         |                                                                    |
-         |                            Happy Trails!                           |
-         |                          _________________                         |
-         |                          (               )                         |
-         |                    _______(             )_______                   |
-         |                    (                           )                   |
-         |                     (      National           )                    |
-         |                      (                       )                     |
-         |                       (       Park          )                      |
-         |                        (                   )                       |
-         |                         (       Service   )                        |
-         |                          (               )                         |
-         |                           (             )                          |
-         |                            (_         _)                           |
-         |                              (_     _)                             |
-         |                                (___)                               |
-         |                                                                    |
-         |                                                                    |
-         |--------------------------------------------------------------------|
-        DISPLAY
-  end
-
   def call
     start
     list_parks
@@ -78,6 +42,17 @@ class NationalParks::CLI
          |--------------------------------------------------------------------|
         DISPLAY
         sleep(8)
+  end
+
+  def list_parks
+
+    NationalParks::Park.all.each.with_index(1){|park,index| puts <<-DISPLAY
+         |--------------------------------------------------------------------|
+                    #{index}. #{park.name}
+         |--------------------------------------------------------------------|
+        DISPLAY
+        }
+    menu
   end
 
   def menu
@@ -141,7 +116,6 @@ class NationalParks::CLI
          |                                                                    |
          |--------------------------------------------------------------------|
         DISPLAY
-
   end
 
   def park_menu
@@ -160,7 +134,7 @@ class NationalParks::CLI
          |--------------------------------------------------------------------|
           #{@park.location}
          |--------------------------------------------------------------------|
-         |                  Press enter to return to park menu                |
+         |                Press enter to return to park menu                  |
          |--------------------------------------------------------------------|
         DISPLAY
         input_2 = gets.strip
@@ -174,7 +148,7 @@ class NationalParks::CLI
          |--------------------------------------------------------------------|
           #{@park.description}
          |--------------------------------------------------------------------|
-         |                  Press enter to return to park menu                |
+         |                Press enter to return to park menu                  |
          |--------------------------------------------------------------------|
         DISPLAY
         input_2 = gets.strip
@@ -188,7 +162,7 @@ class NationalParks::CLI
          |--------------------------------------------------------------------|
           #{@park.information}
          |--------------------------------------------------------------------|
-         |                  Press enter to return to park menu                |
+         |                Press enter to return to park menu                  |
          |--------------------------------------------------------------------|
         DISPLAY
         input_2 = gets.strip
@@ -202,7 +176,7 @@ class NationalParks::CLI
          |--------------------------------------------------------------------|
           #{@park.weather}
          |--------------------------------------------------------------------|
-         |                  Press enter to return to park menu                |
+         |                Press enter to return to park menu                  |
          |--------------------------------------------------------------------|
         DISPLAY
         input_2 = gets.strip
@@ -216,7 +190,7 @@ class NationalParks::CLI
          |--------------------------------------------------------------------|
           #{@park.tours_and_camping}
          |--------------------------------------------------------------------|
-         |                  Press enter to return to park menu                |
+         |                Press enter to return to park menu                  |
          |--------------------------------------------------------------------|
         DISPLAY
         input_2 = gets.strip
@@ -255,5 +229,31 @@ class NationalParks::CLI
         break
       end
     end
+  end
+
+  def goodbye
+    puts <<-DISPLAY
+         |--------------------------------------------------------------------|
+         |                                                   © 2020 Adam Horn |
+         |                                                                    |
+         |                            Happy Trails!                           |
+         |                          _________________                         |
+         |                          (               )                         |
+         |                    _______(             )_______                   |
+         |                    (                           )                   |
+         |                     (      National           )                    |
+         |                      (                       )                     |
+         |                       (       Park          )                      |
+         |                        (                   )                       |
+         |                         (       Service   )                        |
+         |                          (               )                         |
+         |                           (             )                          |
+         |                            (_         _)                           |
+         |                              (_     _)                             |
+         |                                (___)                               |
+         |                                                                    |
+         |                                                                    |
+         |--------------------------------------------------------------------|
+        DISPLAY
   end
 end

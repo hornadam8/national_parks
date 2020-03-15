@@ -3,9 +3,6 @@ require_relative 'cli'
 require 'pry'
 
 class NationalParks::Park
-
-
-
   attr_accessor :name, :link, :location, :description, :information, :weather, :tours_and_camping, :wildlife
 
   @@all = []
@@ -27,7 +24,10 @@ class NationalParks::Park
 
   def scrape_park_page
 
+    #Finds info
     page = NationalParks::Scraper.get_park_page(self.link).css(".fieldset-wrapper")
+
+    #Location(insert eye-roll emoji here)---------------------------------------
 
     location = page[3]
 
@@ -69,7 +69,11 @@ class NationalParks::Park
       self.location = "#{line_1},  #{line_2}, #{line_3}"
     end
 
+    #Description--------------------------------------------------
+
     self.description = page[0].children[3].children.text.chomp("\n")
+
+    #Information--------------------------------------------------
 
     information = page[0].children[11]
 
@@ -79,13 +83,7 @@ class NationalParks::Park
       self.information = page[0].text.strip.split("   ")[0].split("Information")[1]
     end
 
-    if self.name == "Rocky Mountain National Park"
-      self.information += "
-
-      BONUS: The developer of this gem lives 40 minutes from the eastern entrance and highly suggests a hike at Lilly Lake for a great view of Longs Peak!
-
-      "
-    end
+    #Weather-------------------------------------------------------
 
     weather = page[3].children[0].children[0].children[2]
 
@@ -95,6 +93,8 @@ class NationalParks::Park
       self.weather = "There is no information available on the weather for this park."
     end
 
+    #Tours and Camping---------------------------------------------
+
     tours_and_camping = page[3].children[0].children[1].children[2]
 
     if tours_and_camping
@@ -103,9 +103,12 @@ class NationalParks::Park
       self.tours_and_camping = "There is no information available on the tours and camping in this park."
     end
 
+    #Wildlife---------------------------------------------------------
+
     wildlife = page[3].children[0]
 
     if wildlife.children.to_a.length >= 3
+      #Most Parks
       if wildlife.children[2].children.to_a.length >= 3
         self.wildlife = wildlife.children[2].children[2].children[1].children.text
       else
@@ -113,17 +116,28 @@ class NationalParks::Park
         #6 BCGNP, which has almost none of it's info on the page)
         self.wildlife = "There is no information available on wildlife in this park."
       end
+
     else
-      #specifically Joshua Tree, which has no wildlife section
+      #specifically Joshua Tree, which also has no wildlife section
+      #and is constructed differently
       self.wildlife = "There is no information available on wildlife in this park."
     end
 
+    #END OF ATTRIBUTES---------------------------------------------------------
+
+    #fixes strange bug with the construction of Yosemite's information
     if self.name == "Yosemite National Park"
       self.information = "#{self.information.split("<")[0]}"
     end
 
+    #easter egg
 
+    if self.name == "Rocky Mountain National Park"
+      self.information += "
 
+      BONUS: The developer of this gem lives 40 minutes from the eastern entrance and highly suggests a hike at Lilly Lake for a great view of Longs Peak!
+
+      "
+    end
   end
-
 end
