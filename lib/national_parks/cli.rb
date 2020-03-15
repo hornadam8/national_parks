@@ -41,7 +41,7 @@ class NationalParks::CLI
          |                                                                    |
          |--------------------------------------------------------------------|
         DISPLAY
-        sleep(8)
+        sleep(5)
   end
 
   def list_parks

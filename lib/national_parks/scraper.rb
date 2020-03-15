@@ -29,5 +29,4 @@ class NationalParks::Scraper
   def self.get_park_page(link)
     Nokogiri::HTML(URI.open(link))
   end
-
 end
