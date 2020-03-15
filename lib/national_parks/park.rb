@@ -3,7 +3,7 @@ require_relative 'cli'
 require 'pry'
 
 class NationalParks::Park
-  attr_accessor :name, :link, :location, :description, :information, :weather, :tours_and_camping, :wildlife
+  attr_accessor :name, :link, :location, :description, :information, :weather, :tours_and_camping, :wildlife, :nearby_parks
 
   @@all = []
 
@@ -17,6 +17,7 @@ class NationalParks::Park
       @link = link
       self.scrape_park_page
       @@all << self
+      @nearby_parks = []
     end
   end
 
@@ -122,6 +123,14 @@ class NationalParks::Park
       #and is constructed differently
       self.wildlife = "There is no information available on wildlife in this park."
     end
+
+    #Nearby Parks--------------------------------------------------------------
+
+    nearby_parks_page = NationalParks::Scraper.get_park_page(self.link).css(".three-col")
+    park_1 = nearby_parks_page.children[10].children[1].children[3].children[1].text
+    park_2 = nearby_parks_page.children[13].children[1].children[3].children[1].text
+    park_3 = nearby_parks_page.children[16].children[1].children[3].children[1].text
+    self.nearby_parks = [park_1, park_2, park_3]
 
     #END OF ATTRIBUTES---------------------------------------------------------
 
