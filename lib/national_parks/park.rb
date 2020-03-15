@@ -17,7 +17,6 @@ class NationalParks::Park
       @link = link
       self.scrape_park_page
       @@all << self
-      @nearby_parks = []
     end
   end
 
@@ -130,7 +129,9 @@ class NationalParks::Park
     park_1 = nearby_parks_page.children[10].children[1].children[3].children[1].text
     park_2 = nearby_parks_page.children[13].children[1].children[3].children[1].text
     park_3 = nearby_parks_page.children[16].children[1].children[3].children[1].text
-    self.nearby_parks = [park_1, park_2, park_3]
+    self.nearby_parks = park_1
+    self.nearby_parks += park_2
+    self.nearby_parks += park_3
 
     #END OF ATTRIBUTES---------------------------------------------------------
 

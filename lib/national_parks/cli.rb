@@ -108,6 +108,8 @@ class NationalParks::CLI
          |                                                                    |
          | To see information on wildlife in the park, enter 'wildlife'       |
          |                                                                    |
+         | To see nearby parks, enter 'nearby parks'                          |
+         |                                                                    |
          | To see the list of parks again, enter 'list'                       |
          |                                                                    |
          | To exit, enter 'exit'                                              |
@@ -203,6 +205,20 @@ class NationalParks::CLI
         puts <<-DISPLAY
          |--------------------------------------------------------------------|
           #{@park.wildlife}
+         |--------------------------------------------------------------------|
+         |                  Press enter to return to park menu                |
+         |--------------------------------------------------------------------|
+        DISPLAY
+        input_2 = gets.strip
+        input_2 = "enter"
+        case input_2
+        when "enter"
+          pl_list
+        end
+      when "nearby parks"
+        puts <<-DISPLAY
+         |--------------------------------------------------------------------|
+          #{@park.nearby_parks}
          |--------------------------------------------------------------------|
          |                  Press enter to return to park menu                |
          |--------------------------------------------------------------------|
