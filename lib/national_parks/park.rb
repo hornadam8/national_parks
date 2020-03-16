@@ -15,14 +15,14 @@ class NationalParks::Park
     if name.include?("National Park")
       @name = name.rstrip
       @link = link
-      self.scrape_park_page
+      self.assign_attributes
       @@all << self
     end
   end
 
 
 
-  def scrape_park_page
+  def assign_attributes
 
     #Finds info
     page = NationalParks::Scraper.get_park_page(self.link).css(".fieldset-wrapper")

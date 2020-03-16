@@ -234,17 +234,17 @@ class NationalParks::CLI
       when "list"
         list_parks
         break
-      when String != "exit"
+      when "exit"
+        input = "exit"
+        goodbye
+        break
+      else
         puts <<-DISPLAY
          |--------------------------------------------------------------------|
          |          Not sure what that means, give it another shot            |
          |--------------------------------------------------------------------|
         DISPLAY
         pl_list
-      when "exit"
-        input = "exit"
-        goodbye
-        break
       end
     end
   end
