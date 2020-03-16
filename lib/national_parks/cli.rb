@@ -108,7 +108,7 @@ class NationalParks::CLI
          |                                                                    |
          | To see information on wildlife in the park, enter 'wildlife'       |
          |                                                                    |
-         | To see nearby parks, enter 'nearby parks'                          |
+         | To see nearby parks and historic sites/trails, enter 'nearby parks'|
          |                                                                    |
          | To see the list of parks again, enter 'list'                       |
          |                                                                    |

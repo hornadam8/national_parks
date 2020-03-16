@@ -44,7 +44,7 @@ class NationalParks::Park
           line_3 = location.children[1].children[3].children[3].children[5].children.text.gsub("\n","").chomp(" ")
           line_4 = location.children[1].children[3].children[3].children[7].children[0].text
           self.location = "#{line_1} #{line_2_sub},  #{line_3}, #{line_4}"
-          
+
         else
           #Most Parks
           alt_line_2 = location.children[1].children[3].children[3].children[5].children.text.gsub("\n","").chomp(" ")
@@ -85,9 +85,9 @@ class NationalParks::Park
     information = page[0].children[11]
 
     if information
-      self.information = information.children.text.strip.split("   ")[0]
+      self.information = information.children.text.split("   ")[0].split("<")[0].strip
     else
-      self.information = page[0].text.strip.split("   ")[0].split("Information")[1]
+      self.information = page[0].text.split("   ")[0].split("Information")[1].split("<")[0].strip
     end
 
     #Weather-------------------------------------------------------
